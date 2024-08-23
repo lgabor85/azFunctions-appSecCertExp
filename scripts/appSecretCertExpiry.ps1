@@ -176,3 +176,6 @@ foreach ($appRegistration in $appRegistrations.value) {
 $Path = Read-Host "Enter the full path to export the CSV file"
 $logs | Export-Csv -Path $Path -NoTypeInformation -Encoding UTF8
 
+# Output results to console
+Write-Output -InputObject $logs | Format-Table -AutoSize
+

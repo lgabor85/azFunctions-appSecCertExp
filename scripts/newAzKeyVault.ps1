@@ -19,7 +19,9 @@ Deploy Azure Key Vault from ARM
 [string]$resourceGroupName = "${prefix}" + (Get-Random -Minimum 10 -Maximum 100) + "-rg"
 [string]$location = Read-Host -Prompt "Enter the location (i.e. westeurope, northeurope, etc.)"
 [string]$upn = Read-Host -Prompt "Enter your user principal name (email address) used to sign in to Azure"
-
+[string]$secretName = Read-Host -Prompt "Enter the secret name"
+[string]$secret = Read-Host -Prompt "Enter the secret value"
+[securestring]$secretValue = ConvertTo-SecureString -String $secret -AsPlainText -Force
 # Prompt the user to create a new resource group or use an existing one
 $choice = Read-Host -Prompt "Do you want to create resource groupg $resourceGroupNamne or use an existing one? (create/use)"
 
@@ -42,4 +44,9 @@ $adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
 $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json"
 
 # Deploy Key Vault
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -keyVaultName $keyVaultName -adUserId $adUserId
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+    -TemplateUri $templateUri `
+    -keyVaultName $keyVaultName `
+    -adUserId $adUserId `
+    -secretName $secretName `
+    -secretValue $secretValue
