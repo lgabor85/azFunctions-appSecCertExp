@@ -4,7 +4,7 @@ using namespace System.Net
 param($Request, $TriggerMetadata)
 
 # Define your Azure AD credentials
-$keyvaultName = 'functions-Kv12'
+$keyvaultName = 'functions-Kv59'
 $secretName = 'clientSecret'
 $tenantId = (Get-AzKeyVaultSecret -VaultName $keyvaultName -Name 'tenantId' -AsPlainText)
 $clientId = (Get-AzKeyVaultSecret -VaultName $keyvaultName -Name 'clientId' -AsPlainText)
