@@ -1,5 +1,5 @@
 # Vs Code
 .vscode/
 
-# Git Ignore
-.gitignore
+# Function settings
+.local.settings.json

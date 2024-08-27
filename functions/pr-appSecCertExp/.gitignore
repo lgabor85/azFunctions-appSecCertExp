@@ -1,5 +1,5 @@
 # VS Code
 .vscode/
 
-# Gitignore
-.gitignore
+# function settings
+.local.settings.json
